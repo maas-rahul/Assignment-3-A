@@ -1,0 +1,211 @@
+
+<div id="header">
+
+  <h1><b><i> {{title | titlecase }} Report</i></b></h1>
+
+</div>
+
+<div id="middlebox">
+  <div id="graph">
+    <div id="graphreport">
+        <div *ngIf="found || found2">
+            <br>
+            <span>Graph of {{title | titlecase}} : </span> <br><br><br>
+           <img src="../../assets/images/{{image}}"  style="width: 250px; height: 150px;">
+        </div> 
+    </div>  
+  </div>
+
+  <div id="utext">
+    <div style="margin-top: 100px; ">
+      <p>Enter Your Report Here..</p>
+      <input type="text" (keyup)="$event.keyCode == 13 ? myfunction($event) : null" size="35" placeholder="Enter your text here"> 
+      <br>
+    </div>
+  </div>
+
+</div>
+
+<div id="descriptionbox">
+
+  <div id="decriptionjson">
+    <div *ngIf="found">
+      <table>
+        <th colspan="6">JSON DATA HERE..</th>
+        <tr style="background-color: #CDDC39;">
+          <th>Customer ID</th>
+          <th>Month</th>
+          <th>Number of Orders</th>
+          <th>State of Oorder</th>
+          <th>Payment status</th>
+          <th>Amount</th>
+        </tr>
+        <tr *ngFor="let rdatas of remotedata">
+          <td>{{ rdatas._id }}</td>
+          <td>{{ rdatas.month }}</td>
+          <td>{{ rdatas.number_of_orders }}</td>
+          <td>
+            <div *ngIf="rdatas.state_of_order == 0">
+                Pending 
+            </div>
+            <div *ngIf="rdatas.state_of_order == 1">
+            Active 
+            </div>
+            <div *ngIf="rdatas.state_of_order == 2">
+              Cancelled 
+            </div>
+            <div *ngIf="rdatas.state_of_order == 3">
+              Declined
+            </div>
+
+          </td>
+          <td>
+              <div *ngIf="rdatas.payment_status == 0">
+                  Invoiced 
+              </div>
+              <div *ngIf="rdatas.payment_status == 1">
+                Paid 
+              </div>
+              <div *ngIf="rdatas.payment_status == 2">
+                  Not Invoiced	
+              </div>
+
+          </td>
+          <td colspan="6">{{ rdatas.amount }}</td>
+          
+        </tr>
+      </table>
+      
+    </div>
+    <div *ngIf="found2">
+
+      <table>
+          <th colspan="4">JSON DATA HERE..</th>
+          <tr style="background-color: #CDDC39;">
+            <th>Sl. Number</th>
+            <th>Customer ID</th>
+            <th>Item</th>
+            <th>Month</th>
+          </tr>
+          <tr *ngFor="let rdatas of remotedata">
+              <td> {{ rdatas._id }}</td>
+              <td>{{ rdatas.customer_id }}</td>
+              <td>
+                  <div *ngIf="rdatas.item == 101">
+                      Butter 
+                  </div>
+                  <div *ngIf="rdatas.item == 102">
+                      Ghee 
+                  </div>
+                  <div *ngIf="rdatas.item == 103">
+                      Cheese 
+                  </div>
+                  <div *ngIf="rdatas.item == 104">
+                      Tea
+                  </div>
+                  <div *ngIf="rdatas.item == 105">
+                      Coffee
+                  </div>
+
+              </td>
+              <td>{{ rdatas.month }}</td>
+          </tr>
+      </table>
+
+  </div>
+  </div>
+
+  <div id="descriptionmysql">
+      <button (click)="getmysqldata()" style="margin-top: 10px; background-color: darkorange">Get MySQL DATA</button><br><br>
+      <div *ngIf="found1">
+          <table>
+              <th colspan="6">Data Of Local Mysql</th>
+              <tr style="background-color: #CDDC39;">
+                <th>Customer ID</th>
+                <th>Month</th>
+                <th>Number of Orders</th>
+                <th>State of Oorder</th>
+                <th>Payment status</th>
+                <th>Amount</th>
+              </tr>
+              <tr *ngFor="let datas of data1">
+                <td>{{ datas.customer_id }}</td>
+                <td>{{ datas.month }}</td>
+                <td>{{ datas.number_of_orders }}</td>
+                <td>
+                  <div *ngIf="datas.state_of_order == 0">
+                      Pending 
+                  </div>
+                  <div *ngIf="datas.state_of_order == 1">
+                  Active 
+                  </div>
+                  <div *ngIf="datas.state_of_order == 2">
+                    Cancelled 
+                  </div>
+                  <div *ngIf="datas.state_of_order == 3">
+                    Declined
+                  </div>
+
+                </td>
+                <td>
+                    <div *ngIf="datas.payment_status == 0">
+                        Invoiced 
+                    </div>
+                    <div *ngIf="datas.payment_status == 1">
+                      Paid 
+                    </div>
+                    <div *ngIf="datas.payment_status == 2">
+                        Not Invoiced	
+                    </div>
+
+                </td>
+                <td colspan="6">{{ datas.amount }}</td>
+                
+              </tr>
+            </table>
+
+
+    </div>
+
+    <div *ngIf="found3">
+
+      <table>
+          <th colspan="4">Data Of Remote Mysql</th>
+          <tr style="background-color: #CDDC39;">
+            <th>Sl. Number</th>
+            <th>Customer ID</th>
+            <th>Item</th>
+            <th>Month</th>
+          </tr>
+          <tr *ngFor="let datas of data1">
+              <td> {{ datas.sl_no }}</td>
+              <td>{{ datas.customer_id }}</td>
+              <td>
+                  <div *ngIf="datas.item == 101">
+                      Butter 
+                  </div>
+                  <div *ngIf="datas.item == 102">
+                      Ghee 
+                  </div>
+                  <div *ngIf="datas.item == 103">
+                      Cheese 
+                  </div>
+                  <div *ngIf="datas.item == 104">
+                      Tea
+                  </div>
+                  <div *ngIf="datas.item == 105">
+                      Coffee
+                  </div>
+
+              </td>
+              <td>{{ datas.month }}</td>
+          </tr>
+      </table>
+
+  </div>
+
+
+</div>
+
+</div>
+

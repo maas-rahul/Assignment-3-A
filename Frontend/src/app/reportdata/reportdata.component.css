@@ -1,0 +1,87 @@
+body {
+    
+    width: 100%;
+    height: 100%;
+}
+h1 {
+    color: white;
+
+}
+
+#header{
+	width: 100%;
+	height: 10%;
+	background-color: black;
+	text-align: center;
+	margin-top: -20px;
+}
+
+#middlebox{
+    width: 100%;
+    height: 300px;
+    background-color:linen;
+}
+
+#graph{
+    float: left;
+    width:50%;
+    height: 100%;
+    background-color:green;
+}
+
+#graphreport{
+    margin-left: 20px;
+}
+
+#utext{
+    float: right;
+    width:50%;
+    height: 100%;
+    text-align: center;
+    background-color: linen;
+    
+}
+
+#descriptionbox{
+    width: 100%;
+    background-color:rgb(255, 255, 255);
+}
+
+#decriptionjson{
+    float: left;
+    width:100%;
+    margin-top: 10px;
+    
+}
+
+#descriptionmysql{
+    float: right;
+    width:100%;
+    text-align: center;
+    
+    
+}
+
+#mainbody{
+
+    width: 100%;
+    height: 100%;
+    background-color: green;
+
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
